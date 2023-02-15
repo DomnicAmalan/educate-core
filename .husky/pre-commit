@@ -1,0 +1,17 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+echo "pre-commit: Committing to \033[32m$branch\033[m branch\n"
+
+if [ "$branch" = "main" ]; then
+  echo "❌ pre-commit: Can't commit directly to \033[31m$branch\033[m branch\n"
+  exit 1
+fi
+
+pnpm lint:fix
+
+pnpm build
+
+echo '✅ pre-commit: Successful\n'
