@@ -1,6 +1,6 @@
 {
   "extends": ["next/core-web-vitals", "prettier"],
-  "plugins": ["unused-imports", "prettier"],
+  "plugins": ["sort-keys-fix", "unused-imports", "prettier"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
     "eol-last": ["error", "always"],
@@ -10,6 +10,7 @@
     "quotes": ["error", "single", { "avoidEscape": true }],
     "semi": ["error", "always"],
     "sort-keys": ["error", "asc"],
+    "sort-keys-fix/sort-keys-fix": "warn",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",

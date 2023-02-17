@@ -12,4 +12,4 @@ const yoga = createYoga<{ req: NextApiRequest; res: NextApiResponse }>({
 
 export default withLogger(withSession(yoga), __filename, ['client']);
 
-export const config = { api: { bodyParser: true } };
+export const config = { api: { bodyParser: false } };

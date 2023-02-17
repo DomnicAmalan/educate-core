@@ -15,7 +15,7 @@ builder.queryField('User', t =>
   t.prismaConnection({
     cursor: 'id',
     resolve: (query, _parent, _args, _ctx, _info) =>
-      prisma.user.findMany({ ...query }),
+      prisma.user.findMany({ ...query, where: { email: query.cursor?.email } }),
     type: 'User',
   }),
 );

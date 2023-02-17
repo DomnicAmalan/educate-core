@@ -1,8 +1,8 @@
 import { useQuery } from '@apollo/client';
-import { getUsersQuery } from '../src/gql/user.query';
+import { getUsersQuery } from '@app/gql/user.query.graphql';
 
 const Index = () => {
-  useQuery(getUsersQuery);
+  const { data } = useQuery(getUsersQuery, { variables: { email: 'sds' } });
   return <></>;
 };
 
