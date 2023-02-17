@@ -1,23 +1,25 @@
-function checkEnv<T extends Record<string, string>>(env: T): T {
-  const validatedEnv: Record<string, string> = {};
-
-  for (const [key, value] of Object.entries(env)) {
-    if (!process.env[value]) {
-      throw new Error(`${value} environment variable is missing.`);
-    }
-
-    validatedEnv[key] = process.env[value]!;
-  }
-
-  return validatedEnv as T;
+const nodeEnv = process.env.NODE_ENV;
+if (typeof nodeEnv !== 'string' || !nodeEnv) {
+  throw Error(
+    'Startup failed. Environment variable SESSION_KEY must be a non-empty string.',
+  );
 }
-
-const PrivateCfg = checkEnv({
-  PGSQL_DATABASE: 'PGSQL_DATABASE',
-  PGSQL_HOST: 'PGSQL_HOST',
-  PGSQL_PASSWORD: 'PGSQL_PASSWORD',
-  PGSQL_PORT: 'PGSQL_PORT',
-  PGSQL_USER: 'PGSQL_USER',
-});
+const sessionCookieName = process.env.SESSION_COOKIE_NAME;
+if (typeof sessionCookieName !== 'string' || !sessionCookieName) {
+  throw Error(
+    'Startup failed. Environment variable SESSION_KEY must be a non-empty string.',
+  );
+}
+const sessionKey = process.env.SESSION_KEY;
+if (typeof sessionKey !== 'string' || !sessionKey) {
+  throw Error(
+    'Startup failed. Environment variable SESSION_KEY must be a non-empty string.',
+  );
+}
+const PrivateCfg = {
+  nodeEnv,
+  sessionCookieName,
+  sessionKey,
+};
 
 export default PrivateCfg;

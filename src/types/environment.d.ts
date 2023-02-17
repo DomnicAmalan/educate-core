@@ -1,11 +1,28 @@
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      PGSQL_DATABASE: string;
-      PGSQL_HOST: string;
-      PGSQL_PASSWORD: string;
-      PGSQL_PORT: number;
-      PGSQL_USER: string;
+      DATABASE_URL: string;
+    }
+    interface Global {
+      prisma: PrismaClient;
+    }
+  }
+}
+
+export {};
+
+import { PrismaClient } from '../services/prisma';
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      NODE_ENV: 'development' | 'production';
+      PORT?: string;
+      DATABASE_URL: string;
+    }
+
+    interface Global {
+      prisma: PrismaClient;
     }
   }
 }
