@@ -19,37 +19,19 @@ export type Scalars = {
   Float: number;
 };
 
-export type PageInfo = {
-  __typename?: 'PageInfo';
-  endCursor?: Maybe<Scalars['String']>;
-  hasNextPage: Scalars['Boolean'];
-  hasPreviousPage: Scalars['Boolean'];
-  startCursor?: Maybe<Scalars['String']>;
-};
-
 export type Query = {
   __typename?: 'Query';
-  User: QueryUserConnection;
+  getAUserByEmail: User;
+  getAllUsers: Array<User>;
   ok: Scalars['Boolean'];
 };
 
-export type QueryUserArgs = {
-  after?: InputMaybe<Scalars['ID']>;
-  before?: InputMaybe<Scalars['ID']>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+export type QueryGetAUserByEmailArgs = {
+  email?: InputMaybe<Scalars['String']>;
 };
 
-export type QueryUserConnection = {
-  __typename?: 'QueryUserConnection';
-  edges: Array<Maybe<QueryUserConnectionEdge>>;
-  pageInfo: PageInfo;
-};
-
-export type QueryUserConnectionEdge = {
-  __typename?: 'QueryUserConnectionEdge';
-  cursor: Scalars['String'];
-  node: User;
+export type QueryGetAllUsersArgs = {
+  email?: InputMaybe<Scalars['String']>;
 };
 
 export enum Role {
@@ -65,101 +47,117 @@ export type User = {
   role: Role;
 };
 
-export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>;
+export type GetAllUsersOrFilterByEmailQueryVariables = Exact<{
+  email?: InputMaybe<Scalars['String']>;
+}>;
 
-export type Unnamed_1_Query = {
+export type GetAllUsersOrFilterByEmailQuery = {
   __typename?: 'Query';
-  User: {
-    __typename?: 'QueryUserConnection';
-    pageInfo: {
-      __typename?: 'PageInfo';
-      hasNextPage: boolean;
-      endCursor?: string | null;
-    };
-    edges: Array<{
-      __typename?: 'QueryUserConnectionEdge';
-      cursor: string;
-      node: {
-        __typename?: 'User';
-        id: string;
-        email?: string | null;
-        role: Role;
-      };
-    } | null>;
-  };
+  getAllUsers: Array<{ __typename?: 'User'; email?: string | null }>;
 };
 
-export const Document = {
+export type GetAUserByEmailQueryVariables = Exact<{
+  email?: InputMaybe<Scalars['String']>;
+}>;
+
+export type GetAUserByEmailQuery = {
+  __typename?: 'Query';
+  getAUserByEmail: { __typename?: 'User'; email?: string | null };
+};
+
+export const GetAllUsersOrFilterByEmailDocument = {
   definitions: [
     {
       kind: 'OperationDefinition',
+      name: { kind: 'Name', value: 'getAllUsersOrFilterByEmail' },
       operation: 'query',
       selectionSet: {
         kind: 'SelectionSet',
         selections: [
           {
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'email' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'email' },
+                },
+              },
+            ],
             kind: 'Field',
-            name: { kind: 'Name', value: 'User' },
+            name: { kind: 'Name', value: 'getAllUsers' },
             selectionSet: {
               kind: 'SelectionSet',
               selections: [
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'pageInfo' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'hasNextPage' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'endCursor' },
-                      },
-                    ],
-                  },
-                },
-                {
-                  kind: 'Field',
-                  name: { kind: 'Name', value: 'edges' },
-                  selectionSet: {
-                    kind: 'SelectionSet',
-                    selections: [
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'cursor' },
-                      },
-                      {
-                        kind: 'Field',
-                        name: { kind: 'Name', value: 'node' },
-                        selectionSet: {
-                          kind: 'SelectionSet',
-                          selections: [
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'id' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'email' },
-                            },
-                            {
-                              kind: 'Field',
-                              name: { kind: 'Name', value: 'role' },
-                            },
-                          ],
-                        },
-                      },
-                    ],
-                  },
-                },
+                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
               ],
             },
           },
         ],
       },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'email' },
+          },
+        },
+      ],
     },
   ],
   kind: 'Document',
-} as unknown as DocumentNode<Query>;
+} as unknown as DocumentNode<
+  GetAllUsersOrFilterByEmailQuery,
+  GetAllUsersOrFilterByEmailQueryVariables
+>;
+export const GetAUserByEmailDocument = {
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      name: { kind: 'Name', value: 'getAUserByEmail' },
+      operation: 'query',
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'email' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'email' },
+                },
+              },
+            ],
+            kind: 'Field',
+            name: { kind: 'Name', value: 'getAUserByEmail' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'email' } },
+              ],
+            },
+          },
+        ],
+      },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'email' },
+          },
+        },
+      ],
+    },
+  ],
+  kind: 'Document',
+} as unknown as DocumentNode<
+  GetAUserByEmailQuery,
+  GetAUserByEmailQueryVariables
+>;

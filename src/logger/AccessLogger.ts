@@ -59,12 +59,12 @@ export const withLogger = (
       req: {
         // If `req.body` path changes, update `redact.paths` on buildLoggerOptions.
         body: {
-          operationName: req.body.operationName,
+          operationName: req.body?.operationName,
           query:
-            req.body.operationName !== 'IntrospectionQuery'
-              ? req.body.query
+            req.body?.operationName !== 'IntrospectionQuery'
+              ? req.body?.query
               : null,
-          variables: req.body.variables,
+          variables: req.body?.variables,
         },
         client,
         id: req.ctx.requestId,

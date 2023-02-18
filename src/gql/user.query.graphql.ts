@@ -1,21 +1,19 @@
 // /pages/index.tsx
+
 import { gql } from '@apollo/client';
 
-export const getUsersQuery = gql`
-  query {
-    User {
-      pageInfo {
-        hasNextPage
-        endCursor
-      }
-      edges {
-        cursor
-        node {
-          id
-          email
-          role
-        }
-      }
+export const getAllUsersQuery = gql`
+  query getAllUsersOrFilterByEmail($email: String) {
+    getAllUsers(email: $email) {
+      email
+    }
+  }
+`;
+
+export const getAQuery = gql`
+  query getAUserByEmail($email: String) {
+    getAUserByEmail(email: $email) {
+      email
     }
   }
 `;

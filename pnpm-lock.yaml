@@ -20,6 +20,7 @@ specifiers:
   '@types/pg': ^8.6.6
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
+  '@types/ws': ^8.5.4
   '@typescript-eslint/eslint-plugin': ^5.52.0
   '@typescript-eslint/parser': ^5.52.0
   commitizen: ^4.3.0
@@ -34,6 +35,7 @@ specifiers:
   eslint-plugin-sort-keys-fix: ^1.1.2
   eslint-plugin-unused-imports: ^2.0.0
   graphql: ^16.6.0
+  graphql-ws: ^5.11.3
   graphql-yoga: ^3.6.0
   husky: ^8.0.0
   iron-session: ^6.3.1
@@ -47,9 +49,10 @@ specifiers:
   react-dom: 18.2.0
   ts-node: ^10.9.1
   typescript: 4.9.5
+  ws: ^8.12.1
 
 dependencies:
-  '@apollo/client': 3.7.8_gdcq4dv6opitr3wbfwyjmanyra
+  '@apollo/client': 3.7.8_t4tky6f5l7oo6purwtjs3qh5di
   '@graphql-typed-document-node/core': 3.1.1_graphql@16.6.0
   '@next/font': 13.1.6
   '@paralleldrive/cuid2': 2.0.1
@@ -62,6 +65,7 @@ dependencies:
   '@types/react-dom': 18.0.10
   eslint-config-next: 13.1.6_4vsywjlpuriuw3tl5oq6zy5a64
   graphql: 16.6.0
+  graphql-ws: 5.11.3_graphql@16.6.0
   graphql-yoga: 3.6.0_d3dx4krdt4fsynqrp5lqxelwe4
   iron-session: 6.3.1_next@13.1.6
   next: 13.1.6_pjwopsidmaokadturxaafygjp4
@@ -70,6 +74,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   typescript: 4.9.5
+  ws: 8.12.1
 
 devDependencies:
   '@commitlint/cli': 17.4.3
@@ -80,6 +85,7 @@ devDependencies:
   '@graphql-codegen/typescript': 3.0.0_graphql@16.6.0
   '@graphql-codegen/typescript-operations': 3.0.0_graphql@16.6.0
   '@types/pg': 8.6.6
+  '@types/ws': 8.5.4
   '@typescript-eslint/eslint-plugin': 5.52.0_ax36r7lnq4exysbjfqyma6v3xa
   '@typescript-eslint/parser': 5.52.0_4vsywjlpuriuw3tl5oq6zy5a64
   commitizen: 4.3.0
@@ -107,7 +113,7 @@ packages:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.9
 
-  /@apollo/client/3.7.8_gdcq4dv6opitr3wbfwyjmanyra:
+  /@apollo/client/3.7.8_t4tky6f5l7oo6purwtjs3qh5di:
     resolution: {integrity: sha512-o1NxF4ytET2w9HSVMLwYUEEdv6H3XPpbh9M+ABVGnUVT0s6T9pgqRtYO4pFP1TmeDmb1pbRfVhFwh3gC167j5Q==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
@@ -131,6 +137,7 @@ packages:
       '@wry/trie': 0.3.2
       graphql: 16.6.0
       graphql-tag: 2.12.6_graphql@16.6.0
+      graphql-ws: 5.11.3_graphql@16.6.0
       hoist-non-react-statics: 3.3.2
       optimism: 0.16.2
       prop-types: 15.8.1
@@ -4256,7 +4263,6 @@ packages:
       graphql: '>=0.11 <=16'
     dependencies:
       graphql: 16.6.0
-    dev: true
 
   /graphql-yoga/3.6.0_d3dx4krdt4fsynqrp5lqxelwe4:
     resolution: {integrity: sha512-CY4k6/+EPwy/QXfMMkjdcHaUhWEUm7Djd+UxIoY6aJDGfxLF9D3OpBeD7pyxV4pvlRrxp9MEGKZ6kN6LTiVJ/A==}
@@ -6923,7 +6929,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dev: true
 
   /xtend/4.0.2:
     resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
