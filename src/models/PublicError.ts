@@ -1,7 +1,10 @@
 import { isString } from './PrimitiveTypes';
 
 // TODO: Move to lib folder
-export type PublicErrorType = 'Server' | 'Unknown';
+export type PublicErrorType =
+  | 'MutationCreateEmailAddressOtpFailed'
+  | 'Server'
+  | 'Unknown';
 
 export type PublicError = {
   type: PublicErrorType;

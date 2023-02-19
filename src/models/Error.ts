@@ -7,6 +7,7 @@ export interface PubDataType {
 }
 
 const HttpStatus: { [C in PublicErrorType]: number } = {
+  MutationCreateEmailAddressOtpFailed: 400,
   Server: 500,
   Unknown: 500,
 };
